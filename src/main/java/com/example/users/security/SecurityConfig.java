@@ -49,7 +49,7 @@ public class SecurityConfig {
 
             .authorizeHttpRequests(requests ->
                 requests
-                    .requestMatchers("/login").permitAll()// Permettre l'accès à /login pour tous
+                .requestMatchers("/login","/register/**","/all/**","/verifyEmail/**").permitAll()
                     .requestMatchers("/all").hasAuthority("ADMIN") // Seuls les utilisateurs avec le rôle "ADMIN" peuvent accéder à /all
                     .anyRequest().authenticated() // Toutes les autres demandes doivent être authentifiées
             )
